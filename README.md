@@ -150,10 +150,14 @@ Now when the server is being shut down, the minecraft-stop service will stop the
 
 # Resources
 
-The following are the resources that I used for my research on how to do this project:
-Build Infrastructure Tutorial from hashicorp: https://developer.hashicorp.com/terraform/tutorials/aws-get-started/aws-build
-Lab 9 | Infrastructure as Code from Canvas.
-ChatGPT: See `CHATGPTLogs.pdf` to see all of the conversation that helped me in this project
+The following are the resources that I used for my research on how to do this project:  
+
+Build Infrastructure Tutorial from hashicorp: https://developer.hashicorp.com/terraform/tutorials/aws-get-started/aws-build  
+
+Lab 9 | Infrastructure as Code from Canvas.  
+
+ChatGPT: See `CHATGPTLogs.pdf` to see all of the conversation that helped me in this project  
+
     
 
 
