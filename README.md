@@ -51,8 +51,10 @@ This section will go over how to create the EC2 instance for the Minecraft serve
 ### Step 1: Terraform Init and Apply
 Download or clone the repository to a folder on your computer and perform `terraform init`. This will cause terraform to download all of the providers that it needs inorder to create the EC2 instance. 
 ### Step 2: Create an ssh key
-Next is to create an ssh key so you can connect to the instance. Run the following command using AWS CLI in order to get your ssh key:
-`aws ec2 create-key-pair --key-name "PUT NAME HERE" --query 'KeyMaterial' --output text >  "PUT NAME HERE".pem`
+Next is to create an ssh key so you can connect to the instance. Run the following command using AWS CLI in order to get your ssh key:  
+
+`aws ec2 create-key-pair --key-name "PUT NAME HERE" --query 'KeyMaterial' --output text >  "PUT NAME HERE".pem`  
+
 This line will create a .pem file with the key needed to access your EC2 instance. Replace `PUT NAME HERE` with the name you want to name your key. Once this is created go to the `minecraft.tf` file and put the name of your key into the `key_name = ""` portion of the `aws_instance` block. This will allow the instance that is created to use the key you created.
 ### Step 3: Terraform Apply
 Next you want to run `terraform apply`. This will build and create the EC2 instance as it is layed out in `minecraft.tf`. After a few seconds you will be prompted by the console. Type `yes` and wait a few more seconds. Your EC2 instance is now created and ready to be sshed into. Take note of the outputed outputs at the end of `terraform apply`. These will allow for the connection to the server as well as restarting and starting the server from AWS CLI.
