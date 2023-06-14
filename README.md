@@ -106,17 +106,28 @@ Although you can play on the server as it is, if the instance goes down then the
 To have the server run in the background on start up do the following:
 1. run sudo vim /etc/systemd/system/minecraft.service
 2. add the following section
-    >[Unit]
-    >Description = Minecraft Server
-    >After=network.target
-    >[Service]
-    >WorkingDirectory=/home/ubuntu
-    >ExecStart=/user/bin/java -Xmx1024M - Xms1024M -jar /home/ubuntu/server.jar nogui
-    >ExecStop=/home/ubuntu/stop_minecraft.sh
-    >User=Ubuntu
-    >Restart=on-failure
-    >[Install]
-    >multi-user.target
+    >[Unit]  
+    >
+    >Description = Minecraft Server  
+    >
+    >After=network.target  
+    >
+    >[Service]  
+    >
+    >WorkingDirectory=/home/ubuntu  
+    >
+    >ExecStart=/user/bin/java -Xmx1024M - Xms1024M -jar /home/ubuntu/server.jar nogui  
+    >
+    >ExecStop=/home/ubuntu/stop_minecraft.sh  
+    >
+    >User=Ubuntu  
+    >
+    >Restart=on-failure  
+    >
+    >[Install]  
+    >
+    >multi-user.target  
+    >
 3. sudo systemctl enable minecraft
 4. sudo systemctl start minecraft
 
@@ -126,23 +137,35 @@ This will create a service that will start when the instance starts up, starting
 
 If you need to shut down the server it is important to do so properly in order to prevent errors from occuring. In order to do this do the following:
 1. Create a shell script called `stop_minecraft.sh` inside put the following:
-    >#!/bin/bash
-    >screen -S minecraft -p 0 -X stuff "stop$(printf '\r')"
+    >#!/bin/bash  
+    >
+    >screen -S minecraft -p 0 -X stuff "stop$(printf '\r')"  
+    >
 
     This will go into the minecraft.service and stop the server. Make sure to run `chmod +x stop_minecraft.sh` to allow the execution of this file 
 2. Create a new service for detecting when the server is going to encounter some for of stop. To do this:
     1.  run `sudo vim /etc/systemd/system/minecraft-stop.service`
     2.  enter the following into it
-        >[Unit]
-        >Description=Minecraft Server Stop
-        >DefaultDependencies=no
-        Before=shutdown.target reboot.target halt.target
-    [Service]
-    Type=oneshot
-    ExecStart=/bin/true
-    ExecStop=/path/to/stop_minecraft.sh
-    [Install]
-    WantedBy=halt.target reboot.target shutdown.target
+        >[Unit]  
+        >
+        >Description=Minecraft Server Stop  
+        >
+        >DefaultDependencies=no  
+        >
+        Before=shutdown.target reboot.target halt.target  
+        
+        >[Service]  
+    
+        >Type=oneshot  
+    
+        >ExecStart=/bin/true  
+    
+        >ExecStop=/path/to/stop_minecraft.sh  
+    
+        >[Install]  
+    
+        >WantedBy=halt.target reboot.target shutdown.target  
+    
 
     3. run `sudo systemctl enable minecraft-stop` to enable this service. There is no need to run the start command as it will attempt to stop the server when doing so.
     
