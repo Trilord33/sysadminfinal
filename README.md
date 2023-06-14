@@ -152,18 +152,18 @@ If you need to shut down the server it is important to do so properly in order t
         >
         >DefaultDependencies=no  
         >
-        Before=shutdown.target reboot.target halt.target  
-        
+        >Before=shutdown.target reboot.target halt.target  
+        >
         >[Service]  
-    
+        >
         >Type=oneshot  
-    
+        >
         >ExecStart=/bin/true  
-    
+        >
         >ExecStop=/path/to/stop_minecraft.sh  
-    
+        >
         >[Install]  
-    
+        >
         >WantedBy=halt.target reboot.target shutdown.target  
     
 
