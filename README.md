@@ -179,6 +179,8 @@ The following are the resources that I used for my research on how to do this pr
 
 Build Infrastructure Tutorial from hashicorp: https://developer.hashicorp.com/terraform/tutorials/aws-get-started/aws-build  
 
+Query Data with Outputs Tutorial form hashicorp: https://developer.hashicorp.com/terraform/tutorials/aws-get-started/aws-outputs  
+
 Lab 9 | Infrastructure as Code from Canvas.  
 
 ChatGPT: See `CHATGPTLogs.pdf` to see all of the conversation that helped me in this project  
